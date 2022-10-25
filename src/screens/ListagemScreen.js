@@ -15,6 +15,11 @@ export default class ListagemScreen extends React.Component {
             { label: 'Apartamento', value: 2 },
             { label: 'Comércio', value: 3 },
         ]
+        this.finals = [
+            { label: 'Todos', value: -1 },
+            { label: 'Venda', value: 1 },
+            { label: 'Aluguel', value: 2 },
+        ]
         this.navigation = props.navigation
         this.state = {
             anuncios: [],
@@ -29,6 +34,10 @@ export default class ListagemScreen extends React.Component {
         if (filter > 0) setTimeout(() => {
             this.setState({ anuncios: [], carregando: true })
             this.db.loadAnunciosByType(filter).then(anuncios => this.setState({ anuncios: anuncios, carregando: false }))
+        }, 0)
+        else if (filter > 0) setTimeout(() => {
+            this.setState({ anuncios:[], carregando: true})
+            this.db.loadAnunciosByFinal(filter).then(anuncios => this.setState({ anuncios: anuncios, carregando: false}))
         }, 0)
         else setTimeout(() => {
             this.setState({ anuncios: [], carregando: true })
@@ -46,6 +55,7 @@ export default class ListagemScreen extends React.Component {
                     <View>
                         <Text>Filtrar por Tipo:</Text>
                         <SimplePicker values={this.types} onChange={(value) => this.setState({ filter: value }, () => this.refresh())} />
+                        {/* <SimplePicker values={this.finals} onChange={(value) => this.setState({ filter: value }, () => this.refresh())} /> */}
                     </View>
                     {this.state.carregando ? 
                         <Text>Carregando...</Text>: 
