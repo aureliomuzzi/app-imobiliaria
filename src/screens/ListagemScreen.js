@@ -15,7 +15,7 @@ export default class ListagemScreen extends React.Component {
             { label: 'Apartamento', value: 2 },
             { label: 'Comércio', value: 3 },
         ]
-        this.finals = [
+        this.final = [
             { label: 'Todos', value: -1 },
             { label: 'Venda', value: 1 },
             { label: 'Aluguel', value: 2 },
@@ -55,7 +55,10 @@ export default class ListagemScreen extends React.Component {
                     <View>
                         <Text>Filtrar por Tipo:</Text>
                         <SimplePicker values={this.types} onChange={(value) => this.setState({ filter: value }, () => this.refresh())} />
-                        {/* <SimplePicker values={this.finals} onChange={(value) => this.setState({ filter: value }, () => this.refresh())} /> */}
+                        
+                        <Text>Filtrar por Finalidade:</Text>
+                        <SimplePicker values={this.final} onChange={(value) => this.setState({ filter: value }, () => this.refresh())} />
+
                     </View>
                     {this.state.carregando ? 
                         <Text>Carregando...</Text>: 

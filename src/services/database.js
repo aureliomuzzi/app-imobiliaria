@@ -19,7 +19,6 @@ export default class Database{
 
     loadAnunciosByType(anuncio = Anuncio) //Por tipo de imóvel: CASA | APARTAMENTO ...
     {
-        console.log(anuncio)
         return new Promise(resolve => {
             this.db.executeQuery(`SELECT * FROM ${this.table_name} WHERE type = ${anuncio}`,(_,res) => {
                 resolve(res.rows._array)
@@ -29,7 +28,6 @@ export default class Database{
 
     loadAnunciosByFinal(anuncio = Anuncio) //Por tipo de finalidade:  ALUGUEL | VENDA ...
     {
-        console.log(anuncio)
         return new Promise(resolve => {
             this.db.executeQuery(`SELECT * FROM ${this.table_name} WHERE final = ${anuncio}`,(_,res) => {
                 resolve(res.rows._array)
@@ -37,9 +35,13 @@ export default class Database{
         })
     }
 
-    delAnuncio(id) //Deletar Anuncio
+    delAnuncio(anuncio = Anuncio) //Deletar Anuncio
     {
-
+        return new Promise(resolve => {
+            this.db.executeQuery(`DELETE FROM ${this.table_name} WHERE id = ${anuncio.id}`, (_,res) => {
+                resolve(res.rows._array)
+            }, (e) => console.log("Registro excluido com sucesso!!"))
+        })
     }
 
     loadAnuncioById(id) //Ver Anuncio
