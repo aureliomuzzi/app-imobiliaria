@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'react-native'
+import { Button } from 'react-native-ui-lib'
 import * as ImagePicker from 'expo-image-picker'
 import * as MediaLibrary from 'expo-media-library'
 
@@ -37,6 +37,6 @@ export default function IP(
         obterPermissao()
     }, [])
 
-    return <Button title={title} onPress={obterImagem}/>
+    return <Button text50 label={title} onPress={obterImagem} />
 
 }

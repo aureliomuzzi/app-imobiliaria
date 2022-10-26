@@ -35,7 +35,7 @@ export default class ListagemScreen extends React.Component {
             this.setState({ anuncios: [], carregando: true })
             this.db.loadAnunciosByType(filter).then(anuncios => this.setState({ anuncios: anuncios, carregando: false }))
         }, 0)
-        else if (filter > 0) setTimeout(() => {
+        else if (filter > 1) setTimeout(() => {
             this.setState({ anuncios:[], carregando: true})
             this.db.loadAnunciosByFinal(filter).then(anuncios => this.setState({ anuncios: anuncios, carregando: false}))
         }, 0)

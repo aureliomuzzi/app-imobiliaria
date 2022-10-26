@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, Image, Button } from 'react-native'
+import { ScrollView, Image } from 'react-native'
+import { View, TextField, Text, Button } from 'react-native-ui-lib';
 //tirei o input padrão e substitui pelo do elements porque estava dando erro
 //precisa rodar primeiro npm install react-native-elements
 import {Input} from 'react-native-elements'
@@ -34,11 +35,11 @@ class CadastroScreen extends Component{
     }
     render(){
         return (
-            <View>
+            <View flex paddingH-10 paddingT-20>
                 <ScrollView>
-                    <Text>Cadastro de anúncio</Text>
-                    {/* <Input placeholder="Nome"     onChangeText={(text) => this.setState({anuncio_name: text})} maxLength={20}/> */}
-                    <Input containerStyle={{marginTop: 20}} onChangeText={text => this.setState({anuncio_name: text})} maxLength={20}/>
+                    <Text blue10 text30>Cadastro de anúncio</Text>
+                    
+                    <Input placeholder="Nome" containerStyle={{marginTop: 20}} onChangeText={text => this.setState({anuncio_name: text})} maxLength={20}/>
                     <Input type="text" placeholder="Endereço" onChangeText={text => this.setState({anuncio_address: text})} maxLength={60}/>
                     <Input placeholder="Preço"    onChangeText={text => this.setState({anuncio_price: text})} keyboardType='numeric' maxLength={12}/>
                     
@@ -59,7 +60,8 @@ class CadastroScreen extends Component{
                     : 
                     <Text>Nenhuma imagem carregada!</Text> 
                     }
-                    <Button title="Cadastrar" onPress={this.add_address}/>
+                    <Button text50 label="Cadastrar" onPress={this.add_address} />
+
                 </ScrollView>
             </View>
         )

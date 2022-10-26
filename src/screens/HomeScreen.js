@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import {View, TextField, Text, Button} from 'react-native-ui-lib';
 //faltou importar o database
 import DataBase from '../services/database'
 
@@ -14,14 +14,17 @@ export default class HomeScreen extends React.Component{
     }
     render(){
         return(
-            <View>
-                <Text>Bem Vindo Operador!</Text>
+            <View flex paddingH-15 paddingT-20>
+                <Text blue10 text20>Bem Vindo</Text>
                 <Button
-                    title='Listagem'
+                    text50
+                    label='Listagem'
                     onPress={() => {this.navigation.push('Listagem',{})}}
                 />
+                
                 <Button
-                    title='Cadastro'
+                    text50
+                    label='Cadastro'
                     onPress={() => {this.navigation.push('Cadastro',{})}}
                 />
             </View>
